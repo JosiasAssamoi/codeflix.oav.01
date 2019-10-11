@@ -1,3 +1,3 @@
-module.exports = function parseEnv(){
-    console.log("parse env file")
+module.exports = function parseEnv(content){
+    
 }
