@@ -3,7 +3,7 @@ module.exports = function parseIni (content){
 
     const lines = content.split('\n');
     const regEx_cat = /^\[.+\]/g
-    const  regEx_key = /^(\w+.*\s*)/g
+    const  regEx_key = /^(?!;)([\w|\.|\s]+)=(.*)/g
     let newObj ={}
     let category = ''
     let new_lines = []
