@@ -1,6 +1,6 @@
 const path = require('path')
 const fs  = require('fs')
-const parseEnv = require('./parseIni')
+const parseEnv = require('./parseEnv')
 const parseIni = require('./parseIni')
 const args = process.argv.slice(2)
 const filename = args[0]
