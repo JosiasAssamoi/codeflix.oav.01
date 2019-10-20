@@ -20,6 +20,7 @@ module.exports = function parseIni (content){
         }
         else if(line.match(regEx_key)){
             new_line= regEx_key.exec(line)
+            new_line[2]=new_line[2].replace(/"/g,"")
             new_line = Utils.toObject(new_line)
             new_lines.push(new_line)
         }

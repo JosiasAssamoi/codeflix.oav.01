@@ -1,9 +1,9 @@
 const fs =require('fs')
 const Utils= require('./utils')
-module.exports = function parseIni (content){
+module.exports = function parseEnv (content){
 
     content = content.split('\n')
-    let regex = /^([^#]+)=([^#]*)/g
+    let regex = /^([^#]+)=([^#]*)[\r|\n]$/g
     newObj = {}
 
     for(line of content){
@@ -15,7 +15,6 @@ module.exports = function parseIni (content){
 
     let fullDate= Utils.getFullDateString()
     let filename = `env.${fullDate}`
-
     const data = JSON.stringify(newObj,null,' ')
     fs.writeFile(filename, data, (err) => {
         if (err) throw err

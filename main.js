@@ -1,7 +1,8 @@
 const path = require('path')
 const fs  = require('fs')
-const parseEnv = require('./parseIni')
+const parseEnv = require('./parseEnv')
 const parseIni = require('./parseIni')
+const parseYml = require('./parseYml')
 const args = process.argv.slice(2)
 const filename = args[0]
 
@@ -27,7 +28,7 @@ var contents = fs.readFileSync(filename, 'utf8');
 
 //STEP 3 parser le fichier 
 const result = (extension === 'ini') ? parseIni(contents) : 
-(extension === 'env') ? parseEnv(contents) : exit("Erreur au niveau de l'extension")
+(extension === 'env') ? parseEnv(contents) : (extension === 'yml') ? parseYml(contents): exit("Erreur au niveau de l'extension")
 
 // STEP 4 si tout c'est bien passé on affiche result
 
