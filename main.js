@@ -4,26 +4,26 @@ const parseEnv = require('./parseEnv')
 const parseIni = require('./parseIni')
 const parseYml = require('./parseYml')
 const args = process.argv.slice(2)
-const filename = args[0]
+const fileName = args[0]
 
 
 // si on n'envoie pas exactement 1 param on envoie le "man de lapp"
-// __filename renvoie path du fichier courant
+// __fileName renvoie path du fichier courant
 if(args.length !== 1){
-    console.log(`usage : node js ${__filename.split("/").pop()} <CONFIG_FILENAME> `)
+    console.log(`usage : node js ${__fileName.split("/").pop()} <CONFIG_fileName> `)
     process.exit(0)
 }
 //Si le parametre passé a main n'existe pas 
-if (!fs.existsSync(filename)) {
-    console.log(`The file ${filename} does not exist.`);
+if (!fs.existsSync(fileName)) {
+    console.log(`The file ${fileName} does not exist.`);
     process.exit(-1)
 }
 
 // STEP 1 recuperation extension of arg
- const extension =filename.split('.').pop()
+ const extension =fileName.split('.').pop()
 
 //STEP 2 lire contenu
-var contents = fs.readFileSync(filename, 'utf8');
+var contents = fs.readFileSync(fileName, 'utf8');
 
 
 //STEP 3 parser le fichier 
